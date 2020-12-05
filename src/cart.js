@@ -8,7 +8,8 @@ class Cart{
         const container = document.getElementById("cart-container")
 
         let cart_card = document.createElement('div')
-        cart_card.setAttribute("id", "cart-card")
+        cart_product_card.setAttribute("id", "cart-card")
+        cart_card.dataset.id = this.id
         container.appendChild(cart_card) 
 
         let h1 = document.createElement('h1')
@@ -18,6 +19,7 @@ class Cart{
         let cart_product_card = document.createElement('div')
         cart_product_card.setAttribute("id", "cart-products-card")
         cart_card.appendChild(cart_product_card)
+
 
       }
   }

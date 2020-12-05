@@ -20,26 +20,26 @@ class Product{
           img.className = "productImg"
           card.appendChild(img)
 
-          // let btn = document.createElement('button')
-        // btn.setAttribute('class', 'like-btn')
-        // btn.setAttribute('id', toy.id)
-        // btn.innerText = "like"
-        // btn.addEventListener('click', (e) => {
-        //   console.log(e.target.dataset);
-        //   likes(e)
-        // })
+          let btn = document.createElement('button')
+              btn.setAttribute('class', 'add-to-cart-btn')
+              btn.setAttribute('id', this.id)
+              btn.innerText = "Add To Cart"
+              btn.addEventListener('click', (e) => {
+                createCartProduct(this.id);
+          })
+          card.appendChild(btn)
 
         let h2 = document.createElement('h2')
           h2.innerText = this.name
+          h2.className = "productH2"
           card.appendChild(h2)
 
         let h4 = document.createElement('h4')
           h4.innerText = `$${this.price}`
-          card.appendChild(h4)
-        
+          h4.className = "productH4"
+          card.appendChild(h4) 
       }
   }
-
 // products read
 function fetchProducts(){
     fetch(`${BASE_URL}/products`)
