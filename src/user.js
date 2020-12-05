@@ -42,9 +42,20 @@ function loginFormHandler(e) {
       })
       .then(response => response.json())
       .then(json => {
-          let u = new User(json.user.id, json.user.first_name, json.user.last_name, json.user.username, json.user.email)
-        console.log(`Welcome back ${json.user.first_name}`, u)
-            // we will use u to render user information u.whatever_the_method_is
+        let u = new User(json.user.id, json.user.first_name, json.user.last_name, json.user.username, json.user.email)
+        const container = document.getElementById("user-info-container")
+
+        let card = document.createElement('div')
+          card.setAttribute("id", `user-id-${u.id}`)
+          container.appendChild(card)
+
+        let h1 = document.createElement('h1')
+          h1.innerText = `Welcome back, ${u.first_name}! Happy Shopping!`
+          card.appendChild(h1)
+        
+          const login_form = document.getElementById("login-form")
+          login_form.remove()
+        fetchLineItems()
       })
     }
 

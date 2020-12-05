@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 const loginForm = document.querySelector('#login-form')
 loginForm.addEventListener('submit', (e) => loginFormHandler(e))
 fetchProducts()
-fetchCarts()
-fetchCartProducts()
+// fetchLineItem()
 })
 const BASE_URL = 'http://localhost:3000'
 
