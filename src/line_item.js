@@ -12,12 +12,26 @@ class LineItem{
         const container = document.getElementById("cart-container")
 
         let tr = document.createElement('tr');
-        var td = document.createElement('td');
-        var td = document.createElement('td');
-        var td = document.createElement('td');
+            container.appendChild(tr)
 
-        
+        let item = document.createElement('td');
+            let img = document.createElement("img")
+                img.src = `${product.img_url}`
+                item.appendChild(img)
+            let name = document.createElement("p")
+                name.innerText = `${product.name}`
+                item.appendChild(name)
+            tr.appendChild(item)
 
+
+        let price = document.createElement('td');
+            let product_price = product.price * this.quantity
+                price.innerText = product_price
+            tr.appendChild(price)
+
+        let quantity = document.createElement('td');
+                quantity.innerText = this.quantity
+            tr.appendChild(quantity)
       }
   }
 
