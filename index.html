@@ -131,11 +131,52 @@
     </div>
   </div>
 </section>
-<!-- Home Heading/User Info -->
 
-<!-- user infor container -->
-    <div id="user-info-container"></div>
-    <!-- create a div for a form if needed -->
+ <!-- VIDEO PLAY -->
+ <section id="video-play">
+  <div class="dark-overlay">
+    <div class="row">
+      <div class="col">
+        <div class="container p-5">
+          <a href="#" class="video" data-video="https://www.youtube.com/embed/QSDeoKpIsAk" data-toggle="modal" data-target="#videoModal">
+            <i class="fas fa-play fa-3x"></i>
+          </a>
+          <h1>Watch a sample of what we do</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video model -->
+<div class="modal fade" id="videoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+        <iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- HOME HEADING SECTION -->
+ <section id="home-heading" class="p-5">
+  <div class="dark-overlay">
+    <div class="row">
+      <div class="col">
+        <div class="container pt-5">
+          <h1><div id="user-info-container"></div></h1>
+          <p class="d-none d-md-block">While our sponsors support our TV production costs, contributions from our members and subscribers allow us to continue to do what we love best: create unbiased content and fool-proof recipes, free of ads.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <div id='products-container'>
       <!-- this is where my products will go -->
@@ -151,10 +192,25 @@
       </table>
     </div>
     <script>
+      // configure carousel slider
       $('.carousel').carousel({
         interval: 6000,
         pause: 'hover'
       });
+
+      // video play
+      $(function () {
+      // Auto play modal video
+      $(".video").click(function () {
+        var theModal = $(this).data("target"),
+          videoSRC = $(this).attr("data-video"),
+          videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+        $(theModal + ' iframe').attr('src', videoSRCauto);
+        $(theModal + ' button.close').click(function () {
+          $(theModal + ' iframe').attr('src', videoSRC);
+        });
+      });
+    });
     </script>
   </body>
 </html>
