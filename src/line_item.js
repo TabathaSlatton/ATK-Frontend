@@ -9,7 +9,7 @@ class LineItem{
 
       renderLineItem(product) {
         const container = document.getElementById("cart-container")
-
+        const product_id = this.id
         let tr = document.createElement('tr');
             container.appendChild(tr)
 
@@ -32,17 +32,26 @@ class LineItem{
                 price.innerText = product_price
             tr.appendChild(price)
 
-            const del = document.createElement("button")
+        const del = document.createElement("button")
             del.innerText = "Remove from Cart"
-            del.dataset.action = "delete"
+            del.dataset.action = "Delete"
             tr.appendChild(del)
-        
-          tr.addEventListener("click", function(e) {
-              if (e.target.dataset.action === "delete") {
-                // needs to actually do something 
-                e.target.parentElement.remove();
-              }
-        })
+                tr.addEventListener("click", (e) => {
+                    if (e.target.dataset.action === "Delete") {
+                        const configObj = {
+                            method: "DELETE",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json"
+                            },
+                            body: JSON.stringify(tr)
+                        }
+                        fetch(`${BASE_URL}/line_items/${product_id}`, configObj)
+                            .then(resp => resp.json())
+                            e.target.parentElement.remove()
+
+                    }
+                })
         
       }
     }
