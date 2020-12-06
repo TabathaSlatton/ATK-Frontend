@@ -25,7 +25,8 @@ class Product{
               btn.setAttribute('id', this.id)
               btn.innerText = "Add To Cart"
               btn.addEventListener('click', (e) => {
-                createCartProduct(this.id);
+                e.preventDefault()
+                createLineItem(this);
           })
           card.appendChild(btn)
 
