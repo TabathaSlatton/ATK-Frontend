@@ -92,7 +92,6 @@ function fetchLineItems(){
                     <div class="row">
                         <div class="col">
                         <div class="container pt-5">
-                            <h1><div id="user-info-container"></div></h1>
                             <h1 class="d-none d-md-block" style="font-family: Brush Script MT, cursive; font-size: 300%">Cart</h1>
                         </div>
                         </div>
