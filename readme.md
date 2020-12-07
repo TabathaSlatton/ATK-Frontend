@@ -1,6 +1,6 @@
 # America's Test Kitchen-JS and Rails Project
 
-[Watch this video to understand how this app works!](https://youtu.be/fO-NLEfDk6w)
+[Watch this video to understand how this app works!](https://youtu.be/oRKfUllPw5g)
 
 ## Built With
 
