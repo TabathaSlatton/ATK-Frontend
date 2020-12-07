@@ -42,6 +42,17 @@ body {
   color: #fff;
 }
 
+#cart-heading {
+  position: relative;
+  min-height: 200px;
+  background: url("../img/shopping.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #fff;
+}
+
 .dark-overlay {
   position: absolute;
   top: 0;

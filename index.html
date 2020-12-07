@@ -17,7 +17,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <div class="container">
-        <a href="#" class="navbar-brand"><div style="background-color: FireBrick; color: white; text-align:center; text-shadow: 2px 2px #00000052">America's <br>TEST KITCHEN</div> </a>
+        <a href="#" class="navbar-brand"><div style="background-color: FireBrick; color: white; text-align:center; text-shadow: 2px 2px #00000052; padding: 3px">America's <br>TEST KITCHEN</div> </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="navbarCollapse"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
@@ -183,16 +183,14 @@
     <div id='products-container'class="row row-cols-1 row-cols-md-3">
       <!-- this is where my products will go -->
     </div>
-    <div id="cart-container">
-      <h3>Cart: </h3>
-      <table style="width:100%">
-        <tr>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Quantity</th>
-        </tr>
-      </table>
-    </div>
+
+
+    <!-- cart --> 
+      <div id="cart-section">
+      </div>
+      <div id="cart-cards"></div>
+
+
     <script>
       // configure carousel slider
       $('.carousel').carousel({

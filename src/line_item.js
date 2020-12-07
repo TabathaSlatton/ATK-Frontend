@@ -8,35 +8,60 @@ class LineItem{
     }
 
       renderLineItem(product) {
-        const container = document.getElementById("cart-container")
+        const container = document.getElementById("cart-cards")
         const product_id = this.id
-        let tr = document.createElement('tr');
-            container.appendChild(tr)
+        
+        let card = document.createElement("div")
+            card.className = "card mb-3"
+            card.setAttribute("style", "width: 100%")
+        container.appendChild(card)
 
-        let item = document.createElement('td');
+
+        let row = document.createElement("div")
+            row.className = "row no-gutters"
+        card.appendChild(row)
+
+        let col = document.createElement("div")
+            col.className = "col-md-4"
+        card.appendChild(col)
+
             let img = document.createElement("img")
                 img.src = `${product.img_url}`
-                img.className = "img-thumbnail"
-                item.appendChild(img)
-            let name = document.createElement("p")
-                name.innerText = `${product.name}`
-                item.appendChild(name)
-            tr.appendChild(item)
+                img.className = "card-img"
+                img.setAttribute("style", "height: 100%")
+                col.appendChild(img)
 
-        let quantity = document.createElement('td');
-                quantity.innerText = this.quantity
-            tr.appendChild(quantity)
+        let col2 = document.createElement("div")
+            col2.className = "col-md-8"
+        card.appendChild(col2)
 
-            let price = document.createElement('td');
+        let cardBody = document.createElement("div")
+            cardBody.className = "card-body"
+            col2.appendChild(cardBody)
+
+        let name = document.createElement("h5")
+            name.innerText = `${product.name}`
+            name.className = "card-title"
+            cardBody.appendChild(name)
+           
+        let quantity = document.createElement('p');
+                quantity.innerText = `Quantity: ${this.quantity}`
+                quantity.className = "card-text"
+            cardBody.appendChild(quantity)
+
+        let price = document.createElement('h6');
             let product_price = product.price * this.quantity
-                price.innerText = product_price
-            tr.appendChild(price)
+                price.innerText = `Item Total Price: $${product_price}`
+                price.className = "card-text"
+            cardBody.appendChild(price)
 
         const del = document.createElement("button")
-            del.innerText = "Remove from Cart"
+            del.innerText = "Remove"
             del.dataset.action = "Delete"
-            tr.appendChild(del)
-                tr.addEventListener("click", (e) => {
+            del.setAttribute('class', 'btn btn-danger btn-sm')
+
+            card.appendChild(del)
+                card.addEventListener("click", (e) => {
                     if (e.target.dataset.action === "Delete") {
                         const configObj = {
                             method: "DELETE",
@@ -44,15 +69,13 @@ class LineItem{
                                 "Content-Type": "application/json",
                                 "Accept": "application/json"
                             },
-                            body: JSON.stringify(tr)
+                            body: JSON.stringify(card)
                         }
                         fetch(`${BASE_URL}/line_items/${product_id}`, configObj)
                             .then(resp => resp.json())
                             e.target.parentElement.remove()
-
                     }
                 })
-        
       }
     }
 // products read
@@ -62,6 +85,21 @@ function fetchLineItems(){
       .then(line_items => {
           for (const item of line_items){
             let c = new LineItem(item.id, item.user_id, item.completed, item.quantity, item.product_id)
+            const cartHeading = document.getElementById("cart-section")
+                cartHeading.innerHTML = 
+                `<section id="cart-heading" class="p-5">
+                <div class="dark-overlay">
+                    <div class="row">
+                        <div class="col">
+                        <div class="container pt-5">
+                            <h1><div id="user-info-container"></div></h1>
+                            <h1 class="d-none d-md-block" style="font-family: Brush Script MT, cursive; font-size: 300%">Cart</h1>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+                `
               c.renderLineItem(item.product)
           }
       })
