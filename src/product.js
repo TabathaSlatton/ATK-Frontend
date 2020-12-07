@@ -47,6 +47,7 @@ class Product{
         a.setAttribute("data-toggle", 'collapse')
         a.href = `#collapseContent${this.id}`
         a.innerText = "Read more"
+        a.setAttribute("style", "color:FireBrick; font-style: italic;")
         a.setAttribute("aria-expanded", 'false')
         a.setAttribute("aria-controls", `collapseContent$`)
         collapseDiv.appendChild(a)
